@@ -33,25 +33,25 @@
 				?>
 			</div><!-- .site-branding -->
 
-			<?php if ( has_nav_menu( 'main' ) ) : ?>
-				<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><span class="screen-reader-text">Menu</span></button>
-			<?php endif; ?>
-
-			<?php if ( has_nav_menu( 'main' ) ) : ?>
-				<nav id="site-navigation" class="main-navigation">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'main',
-							'container'      => '',
-							'menu_id'        => 'main-menu',
-						)
-					);
-					?>
-				</nav><!-- #site-navigation -->
-			<?php endif; ?>
-
 		</div>
+
+		<?php if ( has_nav_menu( 'main' ) ) : ?>
+			<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><span class="screen-reader-text">Menu</span></button>
+		<?php endif; ?>
+
+		<?php if ( has_nav_menu( 'main' ) ) : ?>
+			<nav id="site-navigation" class="main-navigation">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'main',
+						'container'      => '',
+						'menu_id'        => 'main-menu',
+					)
+				);
+				?>
+			</nav><!-- #site-navigation -->
+		<?php endif; ?>
 
 	</header><!-- #masthead -->
 

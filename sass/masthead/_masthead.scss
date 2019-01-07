@@ -11,12 +11,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		position: fixed;
+		// position: fixed;
 		left: 0;
 		width: 100vw;
 	}
 
-	> div, nav {
+	> div {
 		position: relative;
 		z-index: 5;
 		flex: 1 1 auto;
@@ -26,17 +26,10 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+		// background-color: #fff;
 
 		@include respond-to('large') {
 			padding-right: 0;
-		}
-	}
-
-	nav#site-navigation {
-		display: none;
-
-		@include respond-to('large') {
-			display: flex;
 		}
 	}
 
