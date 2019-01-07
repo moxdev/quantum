@@ -1,0 +1,51 @@
+#masthead {
+	background: rgba(27, 70, 119, 0.9);
+	position: relative;
+	z-index: 50;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	@include padding-left-right;
+	border-bottom: 4px solid $color__brand-2;
+
+	@include respond-to('large') {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		position: fixed;
+		left: 0;
+		width: 100vw;
+	}
+
+	> div, nav {
+		position: relative;
+		z-index: 5;
+		flex: 1 1 auto;
+		// @include padding-left-right(0.75, 1.5);
+		// padding-top: 0.5rem;
+		// padding-bottom: 0.5rem;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		@include respond-to('large') {
+			padding-right: 0;
+		}
+	}
+
+	.site-branding {
+		max-width: 7em;
+		margin-right: auto;
+
+		> a {
+			display: block;
+		}
+
+		@include respond-to('x-small') {
+			max-width: 10em;
+		}
+
+		@include respond-to('medium') {
+			max-width: 15.5em;
+		}
+	}
+}

@@ -1,4 +1,56 @@
-$font__main: sans-serif;
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src: url('fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSans-Regular.woff') format('woff'), url('fonts/OpenSans-Regular.ttf') format('truetype'), url('fonts/OpenSans-Regular.svg#OpenSans-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSans-Italic';
+	src: url('fonts/OpenSans-Italic.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSans-Italic.woff') format('woff'), url('fonts/OpenSans-Italic.ttf') format('truetype'), url('fonts/OpenSans-Italic.svg#OpenSans-Italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSans-Bold';
+	src: url('fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSans-Bold.woff') format('woff'), url('fonts/OpenSans-Bold.ttf') format('truetype'), url('fonts/OpenSans-Bold.svg#OpenSans-Bold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-Light';
+	src: url('fonts/Raleway-Light.eot?#iefix') format('embedded-opentype'), url('fonts/Raleway-Light.woff') format('woff'), url('fonts/Raleway-Light.ttf') format('truetype'), url('fonts/Raleway-Light.svg#Raleway-Light') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Raleway-Regular';
+	src: url('fonts/Raleway-Regular.eot?#iefix') format('embedded-opentype'), url('fonts/Raleway-Regular.otf') format('opentype'),
+		url('fonts/Raleway-Regular.woff') format('woff'), url('fonts/Raleway-Regular.ttf') format('truetype'), url('fonts/Raleway-Regular.svg#Raleway-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-SemiBold';
+	src: url('fonts/Raleway-SemiBold.eot?#iefix') format('embedded-opentype'), url('fonts/Raleway-SemiBold.woff') format('woff'), url('fonts/Raleway-SemiBold.ttf') format('truetype'), url('fonts/Raleway-SemiBold.svg#Raleway-SemiBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$font__open-regular: 'OpenSans-Regular';
+$font__open-bold: 'OpenSans-Bold';
+$font__open-italics: 'OpenSans-Italic';
+
+$font__raleway-light: 'Raleway-Light';
+$font__raleway-regular: 'Raleway-Regular';
+$font__raleway-semi-bold: 'Raleway-SemiBold';
+
+$font__main: $font__open-regular, sans-serif;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__line-height-body: 1.5;

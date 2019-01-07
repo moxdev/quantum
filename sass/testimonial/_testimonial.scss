@@ -1,6 +1,6 @@
 .home-testimonial {
-	background-color: #ab0534;
-	color: #fff;
+	background-color: $color__background-body-alt;
+	color: #000;
 	position: relative;
 	z-index: 5;
 	width: 100%;
@@ -8,16 +8,16 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	&:after {
-		content: "";
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		background-color: #ab0534;
-		opacity: 0.8;
-	}
+	// &:after {
+	// 	content: "";
+	// 	top: 0;
+	// 	right: 0;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	position: absolute;
+	// 	background-color: #ab0534;
+	// 	opacity: 0.8;
+	// }
 
 	img {
 		object-fit: cover;
@@ -46,7 +46,7 @@
 	}
 
 	.testimonial-carousel {
-		color: #fff;
+		color: #000;
 		padding-left: 2em;
 		padding-right: 2em;
 		// padding-bottom: 2em;

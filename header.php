@@ -27,32 +27,36 @@
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$quantum_description = get_bloginfo( 'description', 'display' );
-			if ( $quantum_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $quantum_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
+				the_custom_logo();
+			?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'quantum' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+		<?php if ( has_nav_menu( 'main' ) ) : ?>
+			<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><span class="screen-reader-text">Menu</span></button>
+		<?php endif; ?>
+
+		<?php if ( has_nav_menu( 'main' ) ) : ?>
+			<nav id="site-navigation" class="main-navigation">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'main',
+						'container'      => '',
+						'menu_id'        => 'main-menu',
+					)
+				);
+				?>
+			</nav><!-- #site-navigation -->
+		<?php endif; ?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+		<?php
+		if ( is_front_page() ) :
+			quantum_front_page_carousel();
+		elseif ( is_page() || is_single() ) :
+			quantum_page_feature();
+		endif;
+		?>
+
+		<div class="content-wrapper">

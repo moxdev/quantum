@@ -23,6 +23,8 @@ function quantum_testimonial_carousel() {
 				// The Loop
 				if ( $testimonials->have_posts() ) { ?>
 
+				<!-- CLEANUP MARKUP -->
+
 					<section class="home-testimonial">
 						<div class="home-testimonial-wrapper">
 							<div class="testimonial-carousel">

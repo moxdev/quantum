@@ -60,13 +60,35 @@
 
 	a {
 		display: block;
+		@include padding-left-right;
+		padding-top: 0.75em;
+		padding-bottom: 0.75em;
+		padding-right: 2.75rem;
+		font-size: 0.875em;
+		font-weight: 500;
+		text-transform: uppercase;
 		text-decoration: none;
+		color: #FFF;
+		transition: color 0.125s;
+
+		&:hover, &:focus {
+			color: $color__link-hover;
+			outline: 0;
+		}
+
+		@include respond-to('large') {
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+		}
 	}
 
 	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
+	.current-menu-item > a {
+		color: $color__link;
+
+		&:hover {
+			cursor: text;
+		}
 	}
 }
 

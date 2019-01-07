@@ -41,10 +41,14 @@ if ( ! function_exists( 'quantum_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'home-carousel-sm', 750, 340, true );
+		add_image_size( 'home-carousel-md', 1000, 455, true );
+		add_image_size( 'home-carousel-lg', 1500, 680, true );
+		add_image_size( 'home-carousel-xl', 2200, 1000, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'quantum' ),
+			'main' => esc_html__( 'Main Menu', 'quantum' ),
 		) );
 
 		/*
@@ -131,7 +135,7 @@ function quantum_scripts() {
 	}
 
 	if ( is_front_page() ) {
-		wp_enqueue_script( 'flickity', get_template_directory_uri() . '/js/min/flickity.min.js', array(), '20151215', true );
+		wp_enqueue_script( 'flickity', get_template_directory_uri() . '/js/vendor/flickity.pkgd.min.js', array(), '20151215', true );
 		wp_enqueue_script( 'quantum-flickity', get_template_directory_uri() . '/js/min/testimonial-carousel.min.js', array( 'flickity' ), '20151215', true );
 	}
 }
@@ -170,49 +174,71 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	);
 }
 
-$labels = array(
-	"name" => __( 'Testimonials', 'themeSlug' ),
-	"singular_name" => __( 'Testimonial', 'themeSlug' ),
-	"menu_name" => __( 'Testimonials', 'themeSlug' ),
-	"all_items" => __( 'All Testimonials', 'themeSlug' ),
-	"add_new" => __( 'Add New', 'themeSlug' ),
-	"add_new_item" => __( 'Add New Testimonial', 'themeSlug' ),
-	"edit_item" => __( 'Edit Testimonial', 'themeSlug' ),
-	"new_item" => __( 'New Item', 'themeSlug' ),
-	"view_item" => __( 'View Testimonial', 'themeSlug' ),
-	"search_items" => __( 'Search Testimonials', 'themeSlug' ),
-	"not_found" => __( 'No Testimonials Found', 'themeSlug' ),
-	"not_found_in_trash" => __( 'No Testimonials in trash', 'themeSlug' ),
-	"parent_item_colon" => __( 'Parent Testimonial', 'themeSlug' ),
-	"archives" => __( 'Testimonial Archives', 'themeSlug' ),
-	"insert_into_item" => __( 'Insert into Testimonial', 'themeSlug' ),
-	"uploaded_to_this_item" => __( 'Uploaded to this Testimonial', 'themeSlug' ),
-	"filter_items_list" => __( 'Filter Testimonial List', 'themeSlug' ),
-	"items_list_navigation" => __( 'Testimonial list navigation', 'themeSlug' ),
-	"items_list" => __( 'Testimonials List', 'themeSlug' ),
-	"parent_item_colon" => __( 'Parent Testimonial', 'themeSlug' )
-);
-$args = array(
-	"label" =>'Testimonials',
-	"labels" => $labels,
-	"description" => "",
-	"public" => true,
-	"publicly_queryable" => true,
-	"show_ui" => true,
-	"show_in_rest" => false,
-	"rest_base" => "",
-	"has_archive" => true,
-	"show_in_menu" => true,
-	"exclude_from_search" => false,
-	"capability_type" => "post",
-	"map_meta_cap" => true,
-	"hierarchical" => false,
-	"rewrite" => array( "slug" => "testimonials", "with_front" => true ),
-	"query_var" => true,
-	"supports" => array( "title","editor" ),
-	"menu_icon" => "dashicons-format-status",
-);
-register_post_type( "testimonials", $args );
+// Register Custom Post Type for Testimonial
+function quantum_create_testimonial_custom_post_type() {
+
+  $labels = array(
+    'name'                  => 'Testimonials',
+    'singular_name'         => 'Testimonial',
+    'menu_name'             => 'Testimonials',
+    'name_admin_bar'        => 'Testimonials',
+    'archives'              => 'Testimonials Archives',
+    'attributes'            => 'Testimonials Attributes',
+    'parent_item_colon'     => 'Parent Item: Testimonials',
+    'all_items'             => 'All Testimonials',
+    'add_new_item'          => 'Add New Testimonial',
+    'add_new'               => 'Add New Testimonial',
+    'new_item'              => 'New Testimonial',
+    'edit_item'             => 'Edit Testimonial',
+    'update_item'           => 'Update Testimonial',
+    'view_item'             => 'View Testimonial',
+    'view_items'            => 'View Testimonials',
+    'search_items'          => 'Search Testimonials',
+    'not_found'             => 'Not found',
+    'not_found_in_trash'    => 'Not found in Trash',
+    'featured_image'        => 'Featured Image',
+    'set_featured_image'    => 'Set featured image',
+    'remove_featured_image' => 'Remove featured image',
+    'use_featured_image'    => 'Use as featured image',
+    'insert_into_item'      => 'Insert into item',
+    'uploaded_to_this_item' => 'Uploaded to this item',
+    'items_list'            => 'Items list',
+    'items_list_navigation' => 'Items list navigation',
+    'filter_items_list'     => 'Filter items list',
+  );
+  $rewrite = array(
+    'slug'                  => 'testimonial',
+    'with_front'            => true,
+    'pages'                 => true,
+    'feeds'                 => true,
+  );
+  $args = array(
+    'label'                 => 'Testimonial',
+    'description'           => 'Testimonial Section',
+    'labels'                => $labels,
+    'supports'              => array( 'title', 'editor', 'revisions' ),
+    'taxonomies'            => array( 'testimonial' ),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => true,
+    'menu_position'         => 5,
+    'menu_icon'             => 'dashicons-testimonial',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => false,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'query_var'             => 'testimonial',
+    'rewrite'               => $rewrite,
+    'capability_type'       => 'page',
+    'show_in_rest'          => true,
+  );
+  register_post_type( 'testimonials', $args );
+
+}
+add_action( 'init', 'quantum_create_testimonial_custom_post_type', 0 );
 
 /**
  * Implement the Custom Header feature.
@@ -245,3 +271,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Testimonial Slider.
  */
 require get_template_directory() . '/inc/testimonial.php';
+
+/**
+ * Frontpage Carousel.
+ */
+require get_template_directory() . '/inc/front-page-carousel.php';

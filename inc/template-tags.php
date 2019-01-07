@@ -189,3 +189,33 @@ if ( ! function_exists( 'quantum_page_titles' ) ) :
 		}
 	}
 endif;
+
+/**
+ * Page Feature Image
+ */
+if ( ! function_exists( 'quantum_page_feature' ) ) :
+	/**
+	 * Feature image to be uesr for pages
+	 *
+	 * @return void
+	 */
+	function quantum_page_feature() {
+		if ( has_post_thumbnail() ) {
+			?>
+			<figure class="page-feature">
+				<?php
+				$caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+				the_post_thumbnail();
+				if ( $caption ) {
+					?>
+					<figcaption class="caption">
+						<?php echo esc_html( $caption ); ?>
+					</figcaption>
+				<?php } ?>
+			</figure>
+			<?php
+			wp_enqueue_script( 'quantum-object-fit-library', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20190107', true );
+			add_action( 'wp_footer', 'quantum_object_fit_js', 100 );
+		}
+	}
+endif;
