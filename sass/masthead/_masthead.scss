@@ -32,6 +32,14 @@
 		}
 	}
 
+	nav#site-navigation {
+		display: none;
+
+		@include respond-to('large') {
+			display: flex;
+		}
+	}
+
 	.site-branding {
 		max-width: 7em;
 		margin-right: auto;

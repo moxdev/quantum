@@ -1,7 +1,8 @@
 .main-navigation {
+	display: none;
 	clear: both;
-	display: block;
-	float: left;
+	// display: block;
+	// float: left;
 	width: 100%;
 
 	ul {
@@ -9,6 +10,10 @@
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
+
+		@include respond-to('large') {
+			display: block;
+		}
 
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -92,18 +97,57 @@
 	}
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
+/* Toggle Btn */
+.menu-toggle {
+	position: relative;
+	padding: 0;
+	margin-left: 1rem;
+	width: 2rem;
+	height: 0.875rem;
 
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
+	@include respond-to('large') {
 		display: none;
 	}
-	.main-navigation ul {
-		display: block;
+
+	&, &:hover, &:focus {
+		background: none;
+	}
+
+	&:hover {
+		border-color: #000;
+	}
+
+	&:focus {
+		border-color: $color__link-hover;
+	}
+
+	&:after, &:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 3px;
+		background: #FFF;
+		transition: transform 0.25s, height 0.25s, border-color 0.25s;
+	}
+
+	&:after {
+		bottom: 0;
+		top: auto;
+	}
+
+	&.active {
+		height: 2rem;
+		&:after {
+			transform: rotate(45deg);
+			top: 45%;
+		}
+
+		&:before {
+			top: 45%;
+			transform: rotate(-45deg);
+		}
 	}
 }
 
