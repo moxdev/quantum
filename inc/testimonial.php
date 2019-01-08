@@ -5,6 +5,16 @@
  * @package Quantum_Property_Management
  */
 
+ function quantum_add_testimonial_section() {
+	 if ( function_exists( 'get_field') ) {
+		 $add_testimonial = get_sub_field('add_testimonial_section');
+
+		 if ($add_testimonial) :
+			quantum_testimonial_carousel();
+		 endif;
+	 }
+ }
+
 function quantum_testimonial_carousel() {
 	if ( function_exists( 'get_field' ) ) {
 		$testimonial = get_posts( array('post_type' => 'testimonials', 'posts_per_page' => -1) );

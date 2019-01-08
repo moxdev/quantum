@@ -34,9 +34,10 @@ get_header();
 
 		</main><!-- #main -->
 
-		<?php if (function_exists( 'quantum_testimonial_carousel' ) ) {
-			quantum_testimonial_carousel();
+		<?php if (function_exists( 'quantum_frontpage_flexible_content' ) ) {
+			quantum_frontpage_flexible_content();
 		} ?>
+
 	</div><!-- #primary -->
 
 <?php

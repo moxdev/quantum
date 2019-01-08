@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Static front page carousel
