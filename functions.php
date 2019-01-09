@@ -310,6 +310,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 require get_template_directory() . '/inc/front-page-carousel.php';
 
 /**
+ * Frontpage Statistics Section.
+ */
+require get_template_directory() . '/inc/front-page-statistics.php';
+
+/**
  * Frontpage Flexible Content.
  */
 require get_template_directory() . '/inc/front-page-flexible-content.php';

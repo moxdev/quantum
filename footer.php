@@ -14,6 +14,10 @@
 		</div><!-- .content-wrapper -->
 	</div><!-- #content -->
 
+	<?php if ( is_front_page() && function_exists( 'quantum_frontpage_flexible_content' ) ) {
+		quantum_frontpage_flexible_content();
+	} ?>
+
 	<footer id="colophon" class="site-footer wrapper">
 		<div class="ftr-logo-contact">
 			<?php

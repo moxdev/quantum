@@ -18,9 +18,7 @@ if ( ! function_exists( 'quantum_frontpage_flexible_content' ) ) :
 			if ( have_rows( 'home_page_sections' ) ) :
 				while ( have_rows( 'home_page_sections' ) ) :
 					the_row();
-					if ( get_row_layout() === 'statistics_section' ) :
-						quantum_flexible_statistics_content();
-					elseif ( get_row_layout() === 'highlights_section' ) :
+					if ( get_row_layout() === 'highlights_section' ) :
 						quantum_flexible_highlight_content();
 					elseif ( get_row_layout() === 'callout_section' ) :
 						quantum_flexible_callout_content();
@@ -32,40 +30,6 @@ if ( ! function_exists( 'quantum_frontpage_flexible_content' ) ) :
 		}
 	}
 endif;
-
-/**
- * Frontpage Statistics Section
- *
- * @return void
- */
-
-function quantum_flexible_statistics_content() {
-	if ( have_rows( 'statistics_content' ) ) : ?>
-
-		<section class="statistics">
-			<div class="statistics-container">
-				<?php
-				while ( have_rows( 'statistics_content' ) ) :
-					the_row();
-					$statistic_icon        = get_sub_field( 'statistic_icon' );
-					$statistic_number      = get_sub_field( 'statistic_number' );
-					$statistic_description = get_sub_field( 'statistic_description' );
-					?>
-
-					<div class='icon-wrapper'>
-						<img src="<?php echo esc_url( $statistic_icon['sizes']['statistics-icon'] ); ?>" alt="<?php echo esc_attr( $statistic_icon['alt'] ); ?>" description="<?php echo esc_attr( $statistic_icon['description'] ); ?>">
-					</div>
-					<div class='description-wrapper'>
-						<span class='number'><?php echo esc_html( $statistic_number ) ?></span>
-						<span class='description'><?php echo esc_html( $statistic_description ) ?></span>
-					</div>
-
-				<?php endwhile; ?>
-			</section>
-		</div>
-		<?php
-	endif;
-}
 
 /**
  * Frontpage Highlight Content
