@@ -47,6 +47,7 @@ if ( ! function_exists( 'quantum_setup' ) ) :
 		add_image_size( 'home-carousel-xl', 2200, 1000, true );
 		add_image_size( 'highlight-icon', 200, 9999, false );
 		add_image_size( 'highlight-bk-img', 2200, 1000, true );
+		add_image_size( 'statistics-icon', 200, 9999, false );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -270,26 +271,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
- * Testimonial Slider.
- */
-require get_template_directory() . '/inc/testimonial.php';
-
-/**
  * Frontpage Carousel.
  */
 require get_template_directory() . '/inc/front-page-carousel.php';
 
 /**
- * Frontpage Carousel.
+ * Frontpage Flexible Content.
  */
 require get_template_directory() . '/inc/front-page-flexible-content.php';
-
-/**
- * Frontpage Carousel.
- */
-require get_template_directory() . '/inc/front-page-highlights.php';
-
-/**
- * Frontpage Carousel.
- */
-require get_template_directory() . '/inc/front-page-callout.php';
