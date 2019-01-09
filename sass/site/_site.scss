@@ -16,10 +16,22 @@
 --------------------------------------------------------------*/
 @import "page-templates/front-page";
 
+// #content {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	right: 0;
+// 	z-index: 20;
+// }
+
+// Figure out carousel behind the masthead
+
+#page {
+	background-color: #fff;
+}
+
 #content {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 20;
+	max-width: 920px;
+	margin-left: auto;
+	margin-right: auto;
 }

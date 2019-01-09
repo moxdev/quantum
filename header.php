@@ -55,13 +55,13 @@
 
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
-		<?php
-		if ( is_front_page() ) :
-			quantum_front_page_carousel();
-		elseif ( is_page() || is_single() ) :
-			quantum_page_feature();
-		endif;
-		?>
+	<?php
+	if ( is_front_page() ) :
+		quantum_front_page_carousel();
+	elseif ( is_page() || is_single() ) :
+		quantum_page_feature();
+	endif;
+	?>
 
+	<div id="content" class="site-content">
 		<div class="content-wrapper">

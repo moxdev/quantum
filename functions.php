@@ -243,6 +243,40 @@ function quantum_create_testimonial_custom_post_type() {
 }
 add_action( 'init', 'quantum_create_testimonial_custom_post_type', 0 );
 
+// Main nav submenu toggling.
+add_filter( 'walker_nav_menu_start_el', 'quantum_add_arrow', 10, 4 );
+/**
+ * Add arrow icons into registered menu "main"
+ *
+ * @param string $item_output String to be output after menu items.
+ * @param object $item Menu item.
+ * @param int    $depth Depth of each menu item.
+ * @param object $args Menu.
+ */
+function quantum_add_arrow( $item_output, $item, $depth, $args ) {
+	if ( 'main' === $args->theme_location && in_array( 'menu-item-has-children', $item->classes, true ) ) {
+		$item_output .= '<button class="arrow"><span class="screen-reader-text">Toggle Item</span></button>';
+	}
+	return $item_output;
+}
+
+/**
+ * Object Fit
+ */
+function quantum_object_fit_js() { ?>
+	<script>objectFitImages();</script>
+	<?php
+}
+
+add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
+/**
+ * Move Yoast to bottom
+ */
+function yoast_to_bottom() {
+	return 'low';
+}
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -279,3 +313,8 @@ require get_template_directory() . '/inc/front-page-carousel.php';
  * Frontpage Flexible Content.
  */
 require get_template_directory() . '/inc/front-page-flexible-content.php';
+
+/**
+ * Footer Contact Info/Social Content.
+ */
+require get_template_directory() . '/inc/footer-contact-social.php';
