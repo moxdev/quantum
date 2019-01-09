@@ -27,12 +27,19 @@
 // Figure out carousel behind the masthead
 
 #page {
-	background-color: #fff;
+
 }
 
 #content {
+	background-color: $color__background-body-alt
+}
+
+.content-wrapper {
 	max-width: 950px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 	margin-left: auto;
 	margin-right: auto;
 	@include padding-left-right;
+	background-color: #fff;
 }

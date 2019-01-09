@@ -42,13 +42,13 @@
 	font-style: normal;
 }
 
-$font__open-regular: 'OpenSans-Regular';
-$font__open-bold: 'OpenSans-Bold';
-$font__open-italics: 'OpenSans-Italic';
+$font__open-regular: 'OpenSans-Regular', sans-serif;
+$font__open-bold: 'OpenSans-Bold', sans-serif;
+$font__open-italics: 'OpenSans-Italic', sans-serif;
 
-$font__raleway-light: 'Raleway-Light';
-$font__raleway-regular: 'Raleway-Regular';
-$font__raleway-semi-bold: 'Raleway-SemiBold';
+$font__raleway-light: 'Raleway-Light', sans-serif;
+$font__raleway-regular: 'Raleway-Regular', sans-serif;
+$font__raleway-semi-bold: 'Raleway-SemiBold', sans-serif;
 
 $font__main: $font__open-regular, sans-serif;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;

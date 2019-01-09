@@ -195,27 +195,58 @@ endif;
  */
 if ( ! function_exists( 'quantum_page_feature' ) ) :
 	/**
-	 * Feature image to be uesr for pages
-	 *
-	 * @return void
+	 * Output feature image for pages and main blog page
 	 */
 	function quantum_page_feature() {
-		if ( has_post_thumbnail() ) {
+		/**
+		 * Enqueue objectfit library and output js in footer
+		 */
+		function enqueue_feature_scripts() {
+			wp_enqueue_script( 'quantum-object-fit-library', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20180107', true );
+			add_action( 'wp_footer', 'quantum_object_fit_js', 100 );
+		}
+
+		if ( has_post_thumbnail() && ! is_home() ) {
 			?>
 			<figure class="page-feature">
+				<?php the_post_thumbnail(); ?>
 				<?php
-				$caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-				the_post_thumbnail();
-				if ( $caption ) {
+				global $post;
+				$ancestors = get_post_ancestors( $post->ID );
+				if ( count( $ancestors ) === 0 ) {
 					?>
-					<figcaption class="caption">
-						<?php echo esc_html( $caption ); ?>
-					</figcaption>
+					<div class="wrapper">
+						<span class="parent-name"><?php the_title(); ?></span><br>
+					</div>
+					<?php
+				} else {
+					$parent = array_pop( $ancestors );
+					?>
+					<div class="wrapper">
+						<span class="parent-name"><?php echo get_the_title( $parent ); ?> / </span>
+						<?php foreach ( $ancestors as $ancestor ) { ?>
+							<span class="page-name"><?php echo get_the_title( $ancestor ); ?> &mdash;</span>
+						<?php } ?>
+						<span class="page-name"><?php the_title(); ?></span>
+					</div>
 				<?php } ?>
 			</figure>
 			<?php
-			wp_enqueue_script( 'quantum-object-fit-library', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20190107', true );
-			add_action( 'wp_footer', 'quantum_object_fit_js', 100 );
+			enqueue_feature_scripts();
+		} elseif ( is_home() ) {
+			$blog_id = get_option( 'page_for_posts' );
+			if ( has_post_thumbnail( $blog_id ) ) {
+				?>
+				<figure class="page-feature">
+					<?php echo get_the_post_thumbnail( $blog_id ); ?>
+					<div class="wrapper">
+						<span class="parent-name"><?php echo get_the_title( $blog_id ); ?></span>
+					</div>
+				</figure>
+
+				<?php
+				enqueue_feature_scripts();
+			}
 		}
 	}
 endif;

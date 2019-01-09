@@ -1,3 +1,24 @@
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	font-weight: normal;
+}
+
+h1 {
+	font-family: $font__raleway-regular;
+}
+
+h1.entry-title {
+	position: relative;
+	text-transform: capitalize;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: -0.3125em;
+		width: 3.25em;
+		height: 2px;
+		background: $color__brand-2;
+	}
 }
