@@ -1,10 +1,73 @@
 #colophon {
 	background-color: $color__brand-1;
 	color: #fff;
+	padding-top: 2.941rem;
+	padding-bottom: 2.941rem;
 	@include padding-left-right;
+	font-size: .824rem;
+	text-align: center;
+	// @include font-smooth;
+
+	@include respond-to('small') {
+		// text-align: left;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.flex-left-side {
+			text-align: left;
+		}
+		.flex-right-side {
+			text-align: right;
+		}
+	}
+
+	.flex-left-side, .flex-right-side {
+		// @include test(white);
+		flex: 1 1 auto;
+	}
+
+	.ftr-logo {
+		max-width: 17.857em;
+		margin-bottom: 1.1em;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include respond-to('small') {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.ftr-contact-info {
+		line-height: 1.6;
+
+		.ftr-phone, .ftr-fax, .ftr-email {
+			display: block;
+
+			a {
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+
+		.ftr-email a {
+			text-decoration: underline;
+		}
+
+	}
 
 	.quantum-social-media {
-		margin: 1.375rem 0 0;
+		margin: 2.571em 0 0;
+		padding: 0;
+		justify-content: center;
+		// @include test(yellow);
+
+		@include respond-to('small') {
+			margin: 0;
+			justify-content: flex-end;
+
+		}
 
 		a {
 			background-color: $color__brand-2;
@@ -16,6 +79,14 @@
 					background-color: $color__link-hover;
 					border-color: $color__link-hover;
 			}
+		}
+	}
+
+	.equal-housing {
+		margin-top: 2.95em;
+
+		svg {
+			width: 35px;
 		}
 	}
 }

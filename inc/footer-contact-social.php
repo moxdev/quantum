@@ -75,12 +75,17 @@
 					if ( $phone || $fax || $email ) {
 						if ( $phone ) :
 							?>
-						<span class="ftr-phone">Call today: <a class="tel" href="tel:<?php echo esc_attr( $phone ); ?>"><?php echo esc_html( $phone ); ?></a></span>
+						<span class="ftr-phone">Phone: <a class="tel" href="tel:<?php echo esc_attr( $phone ); ?>"><?php echo esc_html( $phone ); ?></a></span>
+							<?php
+						endif;
+						if ( $fax ) :
+							?>
+						<span class="ftr-fax">Fax: <a class="tel" href="tel:<?php echo esc_attr( $fax ); ?>"><?php echo esc_html( $fax ); ?></a></span>
 							<?php
 						endif;
 						if ( $email ) :
 							?>
-						<span class="ftr-email">or email <a href="mailto:<?php echo esc_attr( $email ); ?>" class="ftr-email"><?php echo esc_html( $email ); ?></a></span>
+						<span class="ftr-email"><a href="mailto:<?php echo esc_attr( $email ); ?>" class="ftr-email"><?php echo esc_html( $email ); ?></a></span>
 							<?php
 						endif;
 					}
