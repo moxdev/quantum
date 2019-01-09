@@ -157,6 +157,33 @@
 	}
 }
 
+.arrow {
+	position: absolute;
+	z-index: 1;
+	right: map-get($outer_spacing, 'small' ) * 0.5 + rem;
+	top: 0.25rem;
+	padding: 0;
+	width: 2rem;
+	height: 2rem;
+	background-color: #000;
+	background-image: url(imgs/sprite-ui-icons.svg);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	transition: background-position 0.25s;
+
+	&.active {
+		background-position: 0 -1.875rem;
+	}
+
+	@include respond-to('x-small') {
+		right: map-get($outer_spacing, 'medium' ) * 0.625 + rem;
+	}
+
+	@include respond-to('large') {
+		display: none;
+	}
+}
+
 /* Toggle Btn */
 .menu-toggle {
 	position: relative;
