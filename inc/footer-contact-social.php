@@ -111,7 +111,7 @@
 				$insta     = get_field( 'instagram_url', 'social-media-channels' );
 				if ( $fb || $tw || $goo || $linked || $yt || $pinterest || $insta ) {
 					?>
-					<ul class="mm4-social-media">
+					<ul class="quantum-social-media">
 						<?php
 						if ( $fb ) :
 							?>

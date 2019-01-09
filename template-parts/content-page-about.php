@@ -22,6 +22,13 @@
 			'after'  => '</div>',
 		) );
 		?>
+
+		<?php
+		if ( function_exists( 'quantum_about_page_content_links' ) ) :
+			quantum_about_page_content_links();
+		endif;
+		?>
+
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>

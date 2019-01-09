@@ -48,6 +48,7 @@ if ( ! function_exists( 'quantum_setup' ) ) :
 		add_image_size( 'highlight-icon', 200, 9999, false );
 		add_image_size( 'highlight-bk-img', 2200, 1000, true );
 		add_image_size( 'statistics-icon', 200, 9999, false );
+		add_image_size( 'about-icon', 200, 9999, false );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -318,6 +319,11 @@ require get_template_directory() . '/inc/front-page-statistics.php';
  * Frontpage Flexible Content.
  */
 require get_template_directory() . '/inc/front-page-flexible-content.php';
+
+/**
+ * About Page Content Links.
+ */
+require get_template_directory() . '/inc/about-page-content-links.php';
 
 /**
  * Footer Contact Info/Social Content.

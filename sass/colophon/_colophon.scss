@@ -2,4 +2,20 @@
 	background-color: $color__brand-1;
 	color: #fff;
 	@include padding-left-right;
+
+	.quantum-social-media {
+		margin: 1.375rem 0 0;
+
+		a {
+			background-color: $color__brand-2;
+			border: 1px solid $color__brand-2;
+			transition: background-color 0.25s, border-color 0.25s;
+			outline: 0;
+
+			&:hover, &:focus {
+					background-color: $color__link-hover;
+					border-color: $color__link-hover;
+			}
+		}
+	}
 }
