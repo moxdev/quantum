@@ -18,11 +18,27 @@ h1.entry-title {
 	&:after {
 		content: '';
 		display: block;
-		position: absolute;
-		left: 0;
-		bottom: -0.3125em;
-		width: 3.25em;
+		margin-top: 0.8235rem;
+		width: 50%;
+		margin-left:auto;
+		margin-right:auto;
 		height: 2px;
 		background: $color__brand-2;
+		// position: absolute;
+		// left: 50%;
+	}
+
+	@include respond-to('small') {
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			bottom: -0.3125em;
+			width: 3.25em;
+			height: 2px;
+			background: $color__brand-2;
+		}
+
 	}
 }

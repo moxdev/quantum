@@ -30,7 +30,8 @@ function quantum_front_page_carousel() {
 							prevNextButtons: false,
 							wrapAround: true,
 							autoPlay: 4000,
-							pauseAutoPlayOnHover: false
+							pauseAutoPlayOnHover: false,
+							pageDots: false;
 						});
 					</script>
 				<?php } ?>
@@ -42,10 +43,16 @@ function quantum_front_page_carousel() {
 						<?php } ?>
 					</div>
 					<?php
-					$carousel_txt = get_field( 'carousel_text' );
-					if ( $carousel_txt ) :
+					$carousel_small_text = get_field( 'carousel_small_text' );
+					$carousel_large_text = get_field( 'carousel_large_text' );
+
+					if ( $carousel_small_text || $carousel_large_text ) :
 						?>
-						<div class="carousel-text"><?php echo wp_kses_post( wpautop( $carousel_txt ) ); ?></div><?php endif; ?>
+						<div class="carousel-text">
+							<span class="carousel-small-text"><?php echo wp_kses_post( wpautop( $carousel_small_text ) ); ?></span>
+							<span class="carousel-large-text"><?php echo wp_kses_post( wpautop( $carousel_large_text ) ); ?></span>
+						</div>
+						<?php endif; ?>
 				</div>
 				<?php
 			endif;

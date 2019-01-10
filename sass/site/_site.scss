@@ -43,18 +43,17 @@
 
 #content {
 	background-color: $color__background-body-alt;
-	@include padding-left-right;
 	@include padding-top-bottom;
+	@include padding-left-right;
 }
 
 .content-wrapper {
 	max-width: $max_content_width;
-	// margin-top: 2rem;
-	// margin-bottom: 2rem;
 	margin-left: auto;
 	margin-right: auto;
 	@include padding-left-right;
 	background-color: #fff;
+	text-align: center;
 
 	@include respond-to('large') {
 		max-width: $max_content_width-lg;
