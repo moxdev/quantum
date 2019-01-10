@@ -42,15 +42,25 @@
 }
 
 #content {
-	background-color: $color__background-body-alt
+	background-color: $color__background-body-alt;
+	@include padding-left-right;
+	@include padding-top-bottom;
 }
 
 .content-wrapper {
-	max-width: 950px;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	max-width: $max_content_width;
+	// margin-top: 2rem;
+	// margin-bottom: 2rem;
 	margin-left: auto;
 	margin-right: auto;
 	@include padding-left-right;
 	background-color: #fff;
+
+	@include respond-to('large') {
+		max-width: $max_content_width-lg;
+	}
+}
+
+article.hentry {
+	margin-bottom: 0;
 }

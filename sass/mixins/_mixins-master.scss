@@ -90,6 +90,17 @@
 	}
 }
 
+// Outside padding
+@mixin padding-top-bottom($padding-sm: map-get($outer_spacing, small), $padding-lg: map-get($outer_spacing, medium)) {
+	padding-top: $padding-sm + rem;
+	padding-bottom: $padding-sm + rem;
+
+	@include respond-to(small) {
+		padding-top: $padding-lg + rem;
+		padding-bottom: $padding-lg + rem;
+	}
+}
+
 // Outside margin
 @mixin margin-left-right($margin-sm: map-get($outer_spacing, small), $margin-lg: map-get($outer_spacing, medium)) {
 	margin-left: $margin-sm + rem;

@@ -2,22 +2,29 @@
 
 	.content-links {
 
+		@include respond-to('medium') {
+			display: flex;
+			justify-content: space-around;
+			font-size: .9em;
+
+		}
+
 		.content-links-inner-wrapper {
 			display: flex;
-			justify-content: flex-start;
 			margin-bottom: 2rem;
 		}
 
 
 		.icon-wrapper {
-			flex: 1 1 15%;
+			flex: 0 1 auto;
 		}
 
 		.link-wrapper {
-			flex: 1 1 85%;
+			flex: 0 1 auto;
 
 			.title, a {
 				display: block;
+				margin-left: 1rem;
 			}
 		}
 
