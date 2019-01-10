@@ -149,4 +149,59 @@
 			}
 		}
 	}
+
+	.statistics-content {
+		max-width: 200px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2.94rem;
+
+		@include respond-to('medium') {
+			display: flex;
+			justify-content: space-around;
+			font-size: .9em;
+
+		}
+
+		.statistics-container {
+			display: flex;
+			// justify-content: center;
+			margin-bottom: 2rem;
+
+			// @include test(green)
+		}
+
+
+		.icon-wrapper {
+			flex: 0 1 auto;
+			text-align: left;
+			// align-self: flex-start;
+			// margin: 0 auto;
+			// @include test(red)
+		}
+
+		.description-wrapper {
+			flex: 0 1 auto;
+			text-align: left;
+			// margin: 0 auto;
+			// @include test(red)
+
+			.number, .description {
+				display: block;
+				margin-left: 1rem;
+			}
+
+			.number {
+				font-family: $font__raleway-semi-bold;
+				font-size: 2rem;
+				line-height: .75;
+			}
+
+			.description {
+				text-transform: uppercase;
+				font-size: 0.8235rem;
+				margin-top: 0.5882rem;
+			}
+		}
+	}
 }
