@@ -33,11 +33,12 @@
 				?>
 			</div><!-- .site-branding -->
 
-		</div>
+			<?php if ( has_nav_menu( 'main' ) ) : ?>
+				<button class="mobile-menu-toggle" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Menu"><span class="inner"></span></button>
+				<!-- <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><span class="screen-reader-text">Menu</span></button> -->
+			<?php endif; ?>
 
-		<?php if ( has_nav_menu( 'main' ) ) : ?>
-			<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><span class="screen-reader-text">Menu</span></button>
-		<?php endif; ?>
+		</div>
 
 		<?php if ( has_nav_menu( 'main' ) ) : ?>
 			<nav id="site-navigation" class="main-navigation">

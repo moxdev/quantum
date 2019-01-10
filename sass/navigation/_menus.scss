@@ -184,56 +184,111 @@
 	}
 }
 
-/* Toggle Btn */
-.menu-toggle {
+.mobile-menu-toggle {
+	// padding: 0 2.5rem 0 0;
+	// margin: 1rem 0 0 auto;
+	color: $color__brand-1;
 	position: relative;
-	padding: 0;
-	margin-left: 1rem;
-	width: 2rem;
-	height: 0.875rem;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 1.375em;
+	line-height: 1;
+	// font-family: $font__main-bold;
 
-	@include respond-to('large') {
-		display: none;
-	}
-
-	&, &:hover, &:focus {
+	&:hover {
+		cursor: pointer;
 		background: none;
 	}
 
-	&:hover {
-		border-color: #000;
-	}
-
-	&:focus {
-		border-color: $color__link-hover;
-	}
-
-	&:after, &:before {
+	&:before,
+	.inner:after,
+	.inner:before {
 		content: '';
+		display: block;
+		background-color: #fff;
+		height: 4px;
+		width: 25px;
 		position: absolute;
+		top: 0;
+		right: 0;
+		transition: transform .125s, top .5s, opacity .25s;
+		transform-origin: center center;
+	}
+
+	.inner:before {
+		top: 9px;
+	}
+
+	.inner:after {
+		top: 18px;
+	}
+
+	&.nav-open {
+		&:before {
+			transform: rotate(45deg);
+			top: 10px;
+		}
+
+		.inner:before {
+			opacity: 0;
+		}
+
+		.inner:after {
+			transform: rotate(-45deg);
+			top: 10px;
+		}
+	}
+
+	@include respond-to(large) {
+		display: none;
+	}
+}
+
+#mobile-navigation {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 25;
+	bottom: 0;
+	left: 0;
+	background-color: #FFF;
+	transform: translate3D(0, 100%, 0);
+	transform-origin: bottom center;
+	transition: transform 0.375s ease-in-out;
+
+	.nav-open & {
+		transform: translate3D(0, 0, 0);
+	}
+
+	@include respond-to(large) {
+		display: none;
+		transform: translate3D(0, 100%, 0) !important;
+	}
+
+	nav {
+		position: fixed;
 		left: 0;
 		right: 0;
 		top: 0;
-		height: 3px;
-		background: #FFF;
-		transition: transform 0.25s, height 0.25s, border-color 0.25s;
-	}
-
-	&:after {
 		bottom: 0;
-		top: auto;
-	}
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 
-	&.active {
-		height: 2rem;
-		&:after {
-			transform: rotate(45deg);
-			top: 45%;
+		.main-menu {
+			padding-top: 1.125rem;
+
+			>li {
+				a {
+					@include padding-left-right;
+				}
+			}
 		}
 
-		&:before {
-			top: 45%;
-			transform: rotate(-45deg);
+		.aux-menu {
+			margin-top: 1.5rem;
+			padding-bottom: 3.5rem;
+			@include padding-left-right;
 		}
 	}
 }
