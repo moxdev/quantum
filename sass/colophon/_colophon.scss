@@ -13,18 +13,22 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
+	}
 
-		.flex-left-side {
+	.flex-left-side {
+		flex: 1 1 auto;
+
+		@include respond-to('small') {
 			text-align: left;
-		}
-		.flex-right-side {
-			text-align: right;
 		}
 	}
 
-	.flex-left-side, .flex-right-side {
-		// @include test(white);
+	.flex-right-side {
 		flex: 1 1 auto;
+
+		@include respond-to('small') {
+			text-align: right;
+		}
 	}
 
 	.ftr-logo {
@@ -41,6 +45,10 @@
 
 	.ftr-contact-info {
 		line-height: 1.6;
+
+		@include respond-to('small') {
+			padding-left: 2.4rem;
+		}
 
 		.ftr-phone, .ftr-fax, .ftr-email {
 			display: block;
