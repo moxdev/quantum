@@ -42,8 +42,9 @@ function quantum_flexible_highlight_content() {
 	$highlight_bk_img = get_sub_field( 'highlight_content_area_background_image' );
 	if ( have_rows( 'highlight_content_areas' ) ) : ?>
 
-		<div class="flex-highlight-outer">
-			<img src="<?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img'] ); ?>" alt="<?php echo esc_attr( $highlight_bk_img['alt'] ); ?>" description="<?php echo esc_attr( $highlight_bk_img['description'] ); ?>">
+		<section class="flex-highlight">
+			<img class="background-img" src="<?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img-sm'] ); ?>" srcset="<?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img-sm'] ); ?> 750w, <?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img-md'] ); ?> 1000w, <?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img-lg'] ); ?> 1500w, <?php echo esc_url( $highlight_bk_img['sizes']['highlight-bk-img-xl'] ); ?> 2200w" sizes="100vw" alt="<?php echo esc_attr( $highlight_bk_img['alt'] ); ?>">
+
 			<div class="flexible-highlight-inner wrapper col-<?php echo esc_attr( $count ); ?>">
 				<?php
 				while ( have_rows( 'highlight_content_areas' ) ) :
@@ -65,7 +66,10 @@ function quantum_flexible_highlight_content() {
 							<?php
 							if ( $icon ) :
 								?>
-								<img src="<?php echo esc_url( $icon['sizes']['highlight-icon'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" description="<?php echo esc_attr( $icon['description'] ); ?>">
+								<div class='icon-wrapper'>
+									<div class='diamond-overlay'></div>
+									<img class='icon' src="<?php echo esc_url( $icon['sizes']['highlight-icon'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" description="<?php echo esc_attr( $icon['description'] ); ?>">
+								</div>
 								<?php
 							endif;
 							if ( $title ) :
@@ -76,12 +80,12 @@ function quantum_flexible_highlight_content() {
 
 							if ( $btn_txt ) :
 								?>
-								<span class="btn highlight-btn"><?php echo esc_html( $btn_txt ); ?></span><?php endif; ?>
+								<span class="highlight-btn"><?php echo esc_html( $btn_txt ); ?></span><?php endif; ?>
 						</div>
 					</a>
 				<?php endwhile; ?>
 			</div>
-		</div>
+		</section>
 		<?php
 	endif;
 }
