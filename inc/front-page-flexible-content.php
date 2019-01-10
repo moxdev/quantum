@@ -62,25 +62,39 @@ function quantum_flexible_highlight_content() {
 						?>
 						">
 					<?php endif; ?>
+
 						<div>
+
 							<?php
 							if ( $icon ) :
 								?>
 								<div class='icon-wrapper'>
-									<div class='diamond-overlay'></div>
-									<img class='icon' src="<?php echo esc_url( $icon['sizes']['highlight-icon'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" description="<?php echo esc_attr( $icon['description'] ); ?>">
+									<img class='icon-img' src="<?php echo esc_url( $icon['sizes']['highlight-icon'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" description="<?php echo esc_attr( $icon['description'] ); ?>">
 								</div>
 								<?php
 							endif;
 							if ( $title ) :
 								?>
-								<h2 class="highlight-title"><?php echo esc_html( $title ); ?></h2>
+
+								<div class='highlight-title-wrapper'>
+									<span class="highlight-title"><?php echo esc_html( $title ); ?></span>
+
+								<?php
+
+								if ( $btn_txt ) :
+									?>
+									<span class="highlight-btn"><?php echo esc_html( $btn_txt ); ?></span>
+									<?php
+								endif;
+								?>
+
+								</div>
+
 								<?php
 							endif;
 
-							if ( $btn_txt ) :
-								?>
-								<span class="highlight-btn"><?php echo esc_html( $btn_txt ); ?></span><?php endif; ?>
+							?>
+
 						</div>
 					</a>
 				<?php endwhile; ?>

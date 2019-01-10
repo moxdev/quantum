@@ -51,8 +51,9 @@ if ( ! function_exists( 'quantum_setup' ) ) :
 		add_image_size( 'highlight-bk-img-lg', 1500, 680, true );
 		add_image_size( 'highlight-bk-img-xl', 2200, 1000, true );
 
-		add_image_size( 'highlight-icon', 200, 9999, false );
+		add_image_size( 'highlight-icon', 70, 70, true );
 		add_image_size( 'highlight-bk-img', 2200, 1000, true );
+
 		add_image_size( 'statistics-icon', 200, 9999, false );
 		add_image_size( 'about-icon', 200, 9999, false );
 

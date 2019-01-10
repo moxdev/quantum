@@ -245,10 +245,8 @@
 			color: #000;
 			font-size: 1.75em;
 			line-height: 1.125;
-			text-transform: uppercase;
 			text-decoration: none;
 			text-align: center;
-			border: 1px solid #fff;
 			background-color: #fff;
 			margin: 0 0 2rem;
 
@@ -263,42 +261,46 @@
 
 		.icon-wrapper {
 			position: relative;
-		}
+			text-align: center;
 
-		.diamond-overlay {
-			// margin-left: 50%;
-			width: 0;
-			height: 0;
-			border: 75px solid transparent;
-			border-bottom-color: red;
-			position: absolute;
-			top: -75px;
-
-			&:after {
+			&:before {
 				content: '';
-				position: absolute;
-				left: -75px;
-				top: 75px;
-				width: 0;
-				height: 0;
-				border: 75px solid transparent;
-				border-top-color: red;
+				background: $color__icon-background;
+				height: 75px;
+				width: 75px;
+				display: block;
+				transform: rotate(45deg);
+				margin-left:auto;
+				margin-right:auto;
+
 			}
 		}
 
-		.icon {
+		.icon-img {
 			position: absolute;
-			top: 0;
-			left: 50%;
+			top: 14px;
+			left: 40%;
+			width: 45px;
+
+		}
+
+		.highlight-title-wrapper {
+			margin-top: 2rem;;
 		}
 
 		.highlight-title {
 			font-size: 1.764rem;
+			display: block;
+			position: relative;
+			text-transform: capitalize;
 		}
 
 		.highlight-btn {
+			position: relative;
 			font-size: 0.8235rem;
 			text-decoration: underline;
+			display: block;
+			margin-top: 1rem;
 		}
 	}
 
