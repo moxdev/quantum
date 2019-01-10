@@ -1,91 +1,115 @@
-// IE Polyfill
-// http://tips.tutorialhorizon.com/2017/01/06/object-doesnt-support-property-or-method-foreach/
-( function() {
-  if ( 'function' === typeof NodeList.prototype.forEach ) {
-    return false;
-  }
-  NodeList.prototype.forEach = Array.prototype.forEach;
-}() );
-
-( function() {
-
-  // Variables we will need
-  const btn = document.querySelector( '.mobile-menu-toggle' );
-  const nav = document.getElementById( 'mobile-navigation' );
-  const page = document.body;
-  const content = document.getElementById( 'content' );
-  const footer = document.getElementById( 'colophon' );
-  const mobileNavAnchors = document.querySelectorAll( '#mobile-main a' );
-  const desktopNavAnchors = document.querySelectorAll( '#desktop-main .main-menu a' );
-  const activeClass = 'nav-open';
-
-  // Calculate what the padding for the top of the panel should be
-  function navPadding() {
-    const topPadding = document.getElementById( 'masthead' ).clientHeight;
-    nav.style.height = `${window.innerHeight - topPadding}px`;
-  }
-
-  // Toggle button text and aria controls, toggle a class on elem, hide all other elements that are passed in the arguments
-  function toggleNav( btn, elem, ...items ) {
-    if ( elem.classList.contains( activeClass ) ) {
-      items.forEach( ( item ) => {
-        item.style.display = 'block';
-      });
-      nav.addEventListener( 'transitionend', () => {
-        btn.setAttribute( 'aria-expanded', 'false' );
-      }, { once: true });
-    } else {
-      nav.addEventListener( 'transitionend', () => {
-        items.forEach( ( item ) => {
-          item.style.display = 'block';
-        });
-        btn.setAttribute( 'aria-expanded', 'true' );
-      }, { once: true });
-    }
-
-    btn.classList.toggle( activeClass );
-    elem.classList.toggle( activeClass );
-  }
-
-  function toggleDropDowns( item ) {
-    item.classList.toggle( activeClass );
-    if ( item.nextElementSibling.classList.contains( activeClass ) ) {
-      item.nextElementSibling.style.maxHeight = 0;
-      setTimeout(
-        function() {
-          item.nextElementSibling.classList.remove( activeClass );
-        },
-        500
-      );
-    } else {
-      item.nextElementSibling.classList.add( activeClass );
-      item.nextElementSibling.style.maxHeight = item.nextElementSibling.scrollHeight +
-        'px';
-    }
-  }
-
-  // Toggle individual nav menus
-  mobileNavAnchors.forEach( ( item ) => {
-    item.addEventListener( 'click', function( evt ) {
-      const hrefStr = item.href.split( '' );
-      if ( '#' == hrefStr[hrefStr.length - 1]) {
-        evt.preventDefault();
-        toggleDropDowns( item );
+// Array.from() polyfill
+if ( ! Array.from ) {
+  Array.from = ( function() {
+    var toStr = Object.prototype.toString;
+    var isCallable = function( fn ) {
+      return 'function' === typeof fn || '[object Function]' === toStr.call( fn );
+    };
+    var toInteger = function( value ) {
+      var number = Number( value );
+      if ( isNaN( number ) ) {
+        return 0;
       }
-    });
+      if ( 0 === number || ! isFinite( number ) ) {
+        return number;
+      }
+      return ( 0 < number ? 1 : -1 ) * Math.floor( Math.abs( number ) );
+    };
+    var maxSafeInteger = Math.pow( 2, 53 ) - 1;
+    var toLength = function( value ) {
+      var len = toInteger( value );
+      return Math.min( Math.max( len, 0 ), maxSafeInteger );
+    };
+
+    // The length property of the from method is 1.
+    return function from( arrayLike/*, mapFn, thisArg */ ) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object( arrayLike );
+
+      // 3. ReturnIfAbrupt(items).
+      if ( null == arrayLike ) {
+        throw new TypeError( 'Array.from requires an array-like object - not null or undefined' );
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = 1 < arguments.length ? arguments[1] : void undefined;
+      var T;
+      if ( 'undefined' !== typeof mapFn ) {
+
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if ( ! isCallable( mapFn ) ) {
+          throw new TypeError( 'Array.from: when provided, the second argument must be a function' );
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if ( 2 < arguments.length ) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength( items.length );
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method
+      // of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable( C ) ? Object( new C( len ) ) : new Array( len );
+
+      // 16. Let k be 0.
+      var k = 0;
+
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while ( k < len ) {
+        kValue = items[k];
+        if ( mapFn ) {
+          A[k] = 'undefined' === typeof T ? mapFn( kValue, k ) : mapFn.call( T, kValue, k );
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+
+      // 20. Return A.
+      return A;
+    };
+  }() );
+}
+
+( function( panel, header ) {
+
+  // Get the height of our panel
+  function getPanelHeight( panel ) {
+    return panel.scrollHeight;
+  }
+
+  // Get our panel in place
+  function positionPanel( panel, header ) {
+    const offset = getPanelHeight( panel ) + getPanelHeight( header ) + 30;
+    panel.style.transform = 'translateY(-' + offset + 'px)';
+  }
+
+  // Set panel initial position
+  positionPanel( panel, header );
+
+  // Button
+  const mobileToggle = document.querySelector( '.mobile-menu-toggle' );
+  mobileToggle.addEventListener( 'click', function() {
+    positionPanel( panel, header );
+    panel.classList.toggle( 'active' );
+    this.classList.toggle( 'active' );
   });
 
-  desktopNavAnchors.forEach( ( item ) => {
-    item.addEventListener( 'click', function( evt ) {
-      const hrefStr = item.href.split( '' );
-      if ( '#' == hrefStr[hrefStr.length - 1]) {
-        evt.preventDefault();
-        toggleDropDowns( item );
-      }
-    });
-  });
-
-  /***** TOGGLE SUBMENUS ******/
+  // Toggle Submenus
   const arrows = [ ...document.querySelectorAll( '.arrow' ) ];
   arrows.forEach( element => {
     element.addEventListener( 'click', toggleSubMenu );
@@ -93,25 +117,15 @@
 
   function toggleSubMenu() {
     if ( 0 == this.nextElementSibling.style.maxHeight ) {
-      this.nextElementSibling.classList.add( 'nav-open' );
-      setTimeout( () => {
-        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 'px';
-      }, 100 );
+      this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 'px';
     } else {
       this.nextElementSibling.style.maxHeight = this.nextElementSibling.style.maxHeight = null;
-      setTimeout( () => {
-        this.nextElementSibling.classList.remove( 'nav-open' );
-      }, 275 );
     }
-    this.classList.toggle( 'nav-open' );
+    this.classList.toggle( 'active' );
   }
 
-  // Event listeners
-  window.addEventListener( 'load', navPadding );
-  window.addEventListener( 'resize', navPadding );
-
-  btn.addEventListener( 'click', function() {
-    toggleNav( this, page, content, footer );
+  window.addEventListener( 'resize', function() {
+    positionPanel( panel, header );
   });
 
-}() );
+}( document.getElementById( 'main-navigation' ), document.getElementById( 'masthead' ) ) );

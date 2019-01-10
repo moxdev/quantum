@@ -45,19 +45,6 @@
 			</div>
 		</div>
 	</footer><!-- #colophon -->
-
-	<div id="mobile-navigation">
-			<nav>
-				<?php
-					wp_nav_menu( array(
-						'theme_location' => 'main',
-						'menu_id' => 'mobile-main',
-						'container' => '',
-						'menu_class' => 'main-menu'
-					) );
-				?>
-			</nav>
-	</div><!-- #mobile-navigation -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
