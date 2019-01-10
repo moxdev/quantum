@@ -19,3 +19,5 @@
 		border-top-color: red;
 }
 ```
+
+https://css-tricks.com/the-shapes-of-css/

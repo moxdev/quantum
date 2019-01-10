@@ -1,0 +1,48 @@
+.page-template-page-about {
+
+	.content-links {
+
+		.content-links-inner-wrapper {
+			display: flex;
+			justify-content: flex-start;
+			margin-bottom: 2rem;
+		}
+
+
+		.icon-wrapper {
+			flex: 1 1 15%;
+		}
+
+		.link-wrapper {
+			flex: 1 1 85%;
+
+			.title, a {
+				display: block;
+			}
+		}
+
+		.title {
+			font-size: 1.765rem;
+			line-height: 1;
+			font-family: $font__raleway-regular;
+		}
+
+		a {
+			margin-top: 0.82rem;
+			color: $color__text-main;
+			position: relative;
+			line-height: 1;
+
+			&:after {
+				content: '';
+				position: absolute;
+				margin-left: 7px;
+				width: 0;
+				height: 0;
+				border-top: 8px solid transparent;
+				border-left: 8px solid $color__brand-2;
+				border-bottom: 8px solid transparent;
+			}
+		}
+	}
+}
