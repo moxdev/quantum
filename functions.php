@@ -57,6 +57,10 @@ if ( ! function_exists( 'quantum_setup' ) ) :
 		add_image_size( 'statistics-icon', 200, 9999, false );
 		add_image_size( 'about-icon', 200, 9999, false );
 
+		add_image_size( 'property-logo-img', 300, 9999, false );
+		add_image_size( 'property-content-img', 230, 140, true );
+		add_image_size( 'property-floorplan-img', 400, 9999, false );
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'main' => esc_html__( 'Main Menu', 'quantum' ),
@@ -250,6 +254,103 @@ function quantum_create_testimonial_custom_post_type() {
 
 }
 add_action( 'init', 'quantum_create_testimonial_custom_post_type', 0 );
+
+// Register Custom Post Type
+function quantum_create_property_custom_post_types() {
+
+	$labels = array(
+		'name'                  => _x( 'Properties', 'Post Type General Name', 'quantum' ),
+		'singular_name'         => _x( 'Property', 'Post Type Singular Name', 'quantum' ),
+		'menu_name'             => __( 'Properties', 'quantum' ),
+		'name_admin_bar'        => __( 'Property', 'quantum' ),
+		'archives'              => __( 'Property Archives', 'quantum' ),
+		'attributes'            => __( 'Property Attributes', 'quantum' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'quantum' ),
+		'all_items'             => __( 'All Properties', 'quantum' ),
+		'add_new_item'          => __( 'Add New Property', 'quantum' ),
+		'add_new'               => __( 'Add New Property', 'quantum' ),
+		'new_item'              => __( 'New Property', 'quantum' ),
+		'edit_item'             => __( 'Edit Property', 'quantum' ),
+		'update_item'           => __( 'Update Property', 'quantum' ),
+		'view_item'             => __( 'View Property', 'quantum' ),
+		'view_items'            => __( 'View Property', 'quantum' ),
+		'search_items'          => __( 'Search Property', 'quantum' ),
+		'not_found'             => __( 'Not found', 'quantum' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'quantum' ),
+		'featured_image'        => __( 'Featured Image', 'quantum' ),
+		'set_featured_image'    => __( 'Set featured image', 'quantum' ),
+		'remove_featured_image' => __( 'Remove featured image', 'quantum' ),
+		'use_featured_image'    => __( 'Use as featured image', 'quantum' ),
+		'insert_into_item'      => __( 'Insert into item', 'quantum' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'quantum' ),
+		'items_list'            => __( 'Items list', 'quantum' ),
+		'items_list_navigation' => __( 'Items list navigation', 'quantum' ),
+		'filter_items_list'     => __( 'Filter items list', 'quantum' ),
+	);
+	$args = array(
+		'label'                 => __( 'Property', 'quantum' ),
+		'description'           => __( 'Custom post type for all Quantum properties.', 'quantum' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', 'post-formats' ),
+		'taxonomies'            => array( 'property_locations' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-building',
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => 'properties',
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'properties', $args );
+
+}
+add_action( 'init', 'quantum_create_property_custom_post_types', 0 );
+
+// Register Custom Taxonomy
+function quantum_property_custom_taxonomy() {
+
+	$labels = array(
+		'name'                       => _x( 'Property Locations', 'Taxonomy General Name', 'quantum' ),
+		'singular_name'              => _x( 'Property Location', 'Taxonomy Singular Name', 'quantum' ),
+		'menu_name'                  => __( 'Property Locations', 'quantum' ),
+		'all_items'                  => __( 'All Properties', 'quantum' ),
+		'parent_item'                => __( 'Parent Item', 'quantum' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'quantum' ),
+		'new_item_name'              => __( 'New Property Location', 'quantum' ),
+		'add_new_item'               => __( 'Add New Property Location', 'quantum' ),
+		'edit_item'                  => __( 'Edit Property Location', 'quantum' ),
+		'update_item'                => __( 'Update Property Location', 'quantum' ),
+		'view_item'                  => __( 'View Property Location', 'quantum' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'quantum' ),
+		'add_or_remove_items'        => __( 'Add or remove property locations', 'quantum' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'quantum' ),
+		'popular_items'              => __( 'Popular Property Locations', 'quantum' ),
+		'search_items'               => __( 'Search Property Locations', 'quantum' ),
+		'not_found'                  => __( 'Not Found', 'quantum' ),
+		'no_terms'                   => __( 'No items', 'quantum' ),
+		'items_list'                 => __( 'Items list', 'quantum' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'quantum' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
+	);
+	register_taxonomy( 'property_locations', array( 'properties' ), $args );
+
+}
+add_action( 'init', 'quantum_property_custom_taxonomy', 0 );
+
 
 // Main nav submenu toggling.
 add_filter( 'walker_nav_menu_start_el', 'quantum_add_arrow', 10, 4 );
