@@ -1,0 +1,17 @@
+.callout {
+	background-color: $color__brand-1;
+	color: #fff;
+	font-family: $font__raleway-regular;
+	@include padding-top-bottom;
+	@include padding-left-right;
+	text-align: center;
+
+	.callout-content-wrapper {
+		font-size: 1.764rem;
+		line-height: 1.3;
+
+		p {
+			margin-top: 0;
+		}
+	}
+}

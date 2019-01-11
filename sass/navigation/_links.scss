@@ -17,3 +17,28 @@ a {
 		outline: 0;
 	}
 }
+
+a[href^=tel],
+a[href^=fax] {
+	text-decoration: none !important;
+
+	&:hover {
+		cursor: text;
+	}
+}
+
+.btn {
+	@extend button;
+	display: inline-block;
+}
+
+.btn-alt {
+	@extend .btn;
+	background-color: $color__background-button-alt;
+	border-color: $color__background-button-alt;
+}
+
+.more-link {
+	display: table;
+	margin-top: 0.5rem;
+}

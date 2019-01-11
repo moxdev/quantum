@@ -119,13 +119,13 @@ function quantum_flexible_callout_content() {
 		if ( $callout_content ) : ?>
 
 			<section class='callout'>
-				<div class='content-wrapper'>
+				<div class='callout-content-wrapper'>
 					<?php echo $callout_content; ?>
 				</div>
 
 				<?php if ( $callout_button_label ) : ?>
 
-					<a rel="noopener noreferrer" href="<?php echo esc_url($callout_button_url); ?>"><?php echo esc_html($callout_button_label); ?></a>
+					<a class='btn' rel='noopener noreferrer' href='<?php echo esc_url($callout_button_url); ?>'><?php echo esc_html($callout_button_label); ?></a>
 
 				<?php endif; ?>
 
@@ -183,18 +183,13 @@ function quantum_testimonial_carousel() {
 										?>
 
 										<div class="cell">
-											<div class="cell-wrapper">
-												<div class="excerpt-wrapper">
+											<div class="name-wrapper">
+												<span class="name"><?php the_title(); ?></span>
+												<span class="company"><?php echo esc_html( $testimonial_company ); ?></span>
+											</div>
 
-													<span class="name"><?php the_title(); ?></span>
-													<span class="company"><?php echo esc_html( $testimonial_company ); ?></span>
-
-												</div>
-
-												<div class="testimonial-content-wrapper">
-													<?php the_content(); ?>
-												</div>
-
+											<div class="testimonial-content-wrapper">
+												<?php the_content(); ?>
 											</div>
 										</div><!-- cell -->
 
@@ -205,7 +200,7 @@ function quantum_testimonial_carousel() {
 								</div><!-- testimonial-carousel -->
 							</div><!-- home-testimonial-wrapper -->
 
-							<a rel="noopener noreferrer" href="<?php echo esc_url($testimonial_btn_url); ?>"><?php echo esc_html($testimonial_btn_text); ?></a>
+							<a class='btn-alt' rel="noopener noreferrer" href="<?php echo esc_url($testimonial_btn_url); ?>"><?php echo esc_html($testimonial_btn_text); ?></a>
 
 						</section>
 

@@ -1,0 +1,83 @@
+.home {
+
+	/*--------------------------------------------------------------
+	## Front Page Carousel Section
+	--------------------------------------------------------------*/
+
+	@import 'carousel';
+
+	/*--------------------------------------------------------------
+	## Front Page Content Styles
+	--------------------------------------------------------------*/
+
+	#content {
+		background-color: #fff;
+	}
+
+	.content-wrapper {
+		padding: 0;
+	}
+
+	article {
+		h2:first-of-type {
+			position: relative;
+			text-transform: capitalize;
+			margin-top: 0;
+			font-size: 2.706rem;
+			line-height: 1;
+			padding-top: 1.5rem;
+
+			&:after {
+				content: '';
+				display: block;
+				margin-top: 0.8235rem;
+				width: 50%;
+				margin-left:auto;
+				margin-right:auto;
+				height: 2px;
+				background: $color__brand-2;
+				// position: absolute;
+				// left: 50%;
+			}
+
+			@include respond-to('small') {
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					left: 0;
+					bottom: -0.3125em;
+					width: 3.25em;
+					height: 2px;
+					background: $color__brand-2;
+				}
+			}
+		}
+	}
+
+	/*--------------------------------------------------------------
+	## Front Page Statistics Section
+	--------------------------------------------------------------*/
+
+	@import 'statistics';
+
+	/*--------------------------------------------------------------
+	## Front Page Highlights Section
+	--------------------------------------------------------------*/
+
+	@import 'highlights';
+
+	/*--------------------------------------------------------------
+	## Front Page Callout Section
+	--------------------------------------------------------------*/
+
+	@import 'callout';
+
+	/*--------------------------------------------------------------
+	## Front Page Testimonial Section
+	--------------------------------------------------------------*/
+
+	@import 'testimonial';
+
+
+}
