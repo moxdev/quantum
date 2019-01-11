@@ -63,7 +63,7 @@ function quantum_flexible_highlight_content() {
 						">
 					<?php endif; ?>
 
-						<div>
+						<div class="inner-wrapper">
 
 							<?php
 							if ( $icon ) :

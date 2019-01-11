@@ -98,8 +98,6 @@
 					margin-right:auto;
 					height: 2px;
 					background: $color__brand-2;
-					// position: absolute;
-					// left: 50%;
 				}
 			}
 		}
@@ -237,6 +235,17 @@
 			left: 0;
 		}
 
+		.flexible-highlight-inner {
+			max-width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+
+			@include respond-to('medium') {
+				display: flex;
+				max-width: $max_content_width;
+			}
+		}
+
 		a {
 			display: block;
 			position: relative;
@@ -249,13 +258,30 @@
 			text-align: center;
 			background-color: #fff;
 			margin: 0 0 2rem;
+			width: 100%;
+			overflow: hidden;
 
-			// background: rgba(255,255,255,.25);
-			// -webkit-transition: color .25s,background .25s;
-			// transition: color .25s,background .25s;
+			@include respond-to('medium') {
+				margin-bottom: 0;
+				margin-right: 2rem;
+
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				padding-bottom: 85%;
+			}
 
 			&:last-child {
 				margin: 0;
+			}
+
+			.inner-wrapper {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
 			}
 		}
 
@@ -279,8 +305,6 @@
 		.icon-img {
 			display: block;
 			position: relative;
-			// top: 14px;
-			// left: 40%;
 			width: 45px;
 			margin-top: -3.9rem;
 			margin-left:auto;
