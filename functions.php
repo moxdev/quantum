@@ -434,6 +434,11 @@ require get_template_directory() . '/inc/front-page-flexible-content.php';
 require get_template_directory() . '/inc/about-page-content-links.php';
 
 /**
+ * Single Property Page Template Tags.
+ */
+require get_template_directory() . '/inc/single-property-template-tags.php';
+
+/**
  * Footer Contact Info/Social Content.
  */
 require get_template_directory() . '/inc/footer-contact-social.php';

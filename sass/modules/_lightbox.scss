@@ -1,0 +1,140 @@
+#imagelightbox {
+	position: fixed;
+	z-index: 8000;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+
+.imagelightbox-overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 7500;
+	background-color: rgba(255, 255, 255, .95);
+}
+
+button.imagelightbox-arrow {
+	position: fixed;
+	z-index: 9000;
+	top: 47.5%;
+	font-size: 2rem;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	border-radius: 50%;
+	color: $color__brand-1;
+	background-color: transparent;
+	box-shadow: none;
+	transition: color .25s;
+
+	&:hover {
+		color: $color__brand-2;
+	}
+
+	@include respond-to(small) {
+		font-size: 3rem;
+	}
+}
+
+.imagelightbox-arrow-left {
+	left: .5rem;
+
+	@include respond-to(x-small) {
+		left: 1rem;
+	}
+}
+
+.imagelightbox-arrow-right {
+	right: .5rem;
+
+	@include respond-to(x-small) {
+		right: 1rem;
+	}
+}
+
+.imagelightbox-close {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	z-index: 7600;
+	color: $color__brand-1;
+	background-color: transparent;
+	box-shadow: none;
+	font-size: 2rem;
+	line-height: 1;
+	padding: .5rem;
+	transition: color .25s;
+	// font-family: $font__alt-bold;
+
+	&:hover {
+		color: $color__brand-2;
+		cursor: pointer;
+	}
+
+	@include respond-to(small) {
+		font-size: 2.5rem;
+	}
+}
+
+.imagelightbox-caption {
+	// font-family: $font__alt-bold;
+	font-size: 1.25em;
+	line-height: 1.125;
+	text-align: center;
+	color: $color__brand-2;
+	position: fixed;
+	z-index: 9999;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding: 0.625em;
+}
+
+/* Animation */
+@keyframes loading {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Loader (*/
+.imagelightbox-loading {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: transparent;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -20px 0 0 -20px;
+	z-index: 9999;
+
+	border-top: 6px solid darken($color__brand-1, 20%);
+	border-right: 6px solid darken($color__brand-1, 20%);
+	border-bottom: 6px solid $color__brand-2;
+	border-left: 6px solid $color__brand-2;
+
+	animation: loading 1.2s infinite linear;
+
+}
+
+.imagelightbox-overlay,
+.imagelightbox-close,
+.imagelightbox-caption,
+.imagelightbox-nav,
+.imagelightbox-arrow {
+	animation: fade-in .25s linear;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

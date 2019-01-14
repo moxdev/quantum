@@ -1,0 +1,87 @@
+.single-properties {
+
+	.floorplans-gallery {
+		background-color: #000;
+		margin-top: 2.5em;
+		margin-bottom: 1.5em;
+		padding-left: 1em;
+		padding-right: 1em;
+		width: 100%;
+		max-width: 300px;
+		height: 200px;
+		overflow-x: hidden;
+
+		.cell {
+			width: 100%;
+			height: 100%;
+			padding-top: 15px;
+			padding-bottom: 15px;
+
+			img {
+				height: 100%;
+				width: auto;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				transition: box-shadow .25s ease-out, transform .25s ease-out;
+			}
+
+			a:hover {
+				img {
+					transform: scale(1.025);
+					box-shadow: 0 0 7px rgba(0, 0, 0, .6);
+				}
+			}
+		}
+
+		@include respond-to(x-small) {
+			max-width: 450px;
+		}
+
+		@include respond-to(small) {
+			max-width: 675px;
+			height: 250px;
+
+			.cell {
+				width: 50%;
+			}
+		}
+
+		@include respond-to(medium) {
+			max-width: 925px;
+
+			.cell {
+				width: 33.333%;
+			}
+
+			button.flickity-prev-next-button.next {
+				right: -30px;
+				// background-color: #000;
+			}
+
+			button.flickity-prev-next-button.previous {
+				left: -30px;
+				// background-color: #000;
+			}
+		}
+
+		@include respond-to(large) {
+			max-width: $max_content_width * .95;
+		}
+	}
+
+	.map-wrapper {
+		position: relative;
+	}
+
+	#map-canvas {
+		min-height: 300px;
+
+		@include respond-to('medium') {
+			min-height: 550px;
+		}
+	}
+
+
+
+}
