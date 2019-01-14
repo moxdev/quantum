@@ -58,7 +58,6 @@
 	margin-right: auto;
 	@include padding-left-right;
 	background-color: #fff;
-	text-align: center;
 
 	@include respond-to('large') {
 		max-width: $max_content_width-lg;

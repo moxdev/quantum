@@ -64,8 +64,8 @@
 
 					if( $add_application_file ):
 						$application_download_section = get_field('application_download_section');
-						$file = $application_download_section['prop_application'];
-						$download_url_text = $application_download_section['download_url_text'];
+						$file                         = $application_download_section['prop_application'];
+						$download_url_text            = $application_download_section['download_url_text'];
 
 						if ( $application_download_section ) :
 
@@ -96,6 +96,8 @@
 
 		<?php quantum_property_amenities_section(); ?>
 		<?php quantum_property_floorplans_section(); ?>
+		<?php quantum_property_location_section(); ?>
+		<?php quantum_property_contact_form_section(); ?>
 
 	</div><!-- .entry-content -->
 
