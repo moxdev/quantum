@@ -31,7 +31,7 @@ function quantum_front_page_carousel() {
 							wrapAround: true,
 							autoPlay: 4000,
 							pauseAutoPlayOnHover: false,
-							pageDots: false;
+							pageDots: true;
 						});
 					</script>
 				<?php } ?>

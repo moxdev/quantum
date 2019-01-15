@@ -20,22 +20,22 @@
 		width: 100vw;
 	}
 
-	> div {
-		position: relative;
-		z-index: 5;
-		flex: 1 1 auto;
-		// @include padding-left-right(0.75, 1.5);
-		// padding-top: 0.5rem;
-		// padding-bottom: 0.5rem;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		// background-color: #fff;
+	// > div {
+	// 	position: relative;
+	// 	z-index: 5;
+	// 	flex: 1 1 auto;
+	// 	// @include padding-left-right(0.75, 1.5);
+	// 	// padding-top: 0.5rem;
+	// 	// padding-bottom: 0.5rem;
+	// 	display: flex;
+	// 	justify-content: flex-end;
+	// 	align-items: center;
+	// 	// background-color: #fff;
 
-		@include respond-to('large') {
-			padding-right: 0;
-		}
-	}
+	// 	@include respond-to('large') {
+	// 		padding-right: 0;
+	// 	}
+	// }
 
 	.site-branding {
 		max-width: 7em;
