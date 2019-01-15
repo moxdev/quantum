@@ -1,13 +1,9 @@
 #masthead {
 	background: rgba(27, 70, 119, 0.9);
-	// position: absolute;
-	// top: 0;
-	// left: 0;
-	// right: 0;
+	position: relative;
 	z-index: 50;
-	// padding-top: 1em;
-	// padding-bottom: 1em;
-	@include padding-top-bottom;
+	padding-top: 1em;
+	padding-bottom: 1em;
 	@include padding-left-right;
 	border-bottom: 4px solid $color__brand-2;
 
@@ -20,7 +16,7 @@
 		width: 100vw;
 	}
 
-	> div {
+	>div {
 		position: relative;
 		z-index: 5;
 		flex: 1 1 auto;
@@ -41,7 +37,7 @@
 		max-width: 7em;
 		margin-right: auto;
 
-		> a {
+		>a {
 			display: block;
 		}
 
