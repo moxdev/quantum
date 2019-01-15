@@ -9,7 +9,29 @@
 	text-align: center;
 
 	h2 {
-		@extend h1.entry-title;
+		position: relative;
+		text-transform: capitalize;
+		margin-top: 0;
+		font-size: 2.706rem;
+		line-height: 1;
+		padding-top: 1.5rem;
+
+		&:after {
+			content: '';
+			display: block;
+			margin-top: 0.8235rem;
+			width: 115px;
+			margin-left:auto;
+			margin-right:auto;
+			height: 2px;
+			background: $color__brand-2;
+		}
+
+		@include respond-to('small') {
+			&:after {
+				width: 130px;
+			}
+		}
 	}
 
 	.home-testimonial-wrapper {
@@ -21,8 +43,8 @@
 		z-index: 10;
 		padding-left: 1.2em;
 		padding-right: 1.2em;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
 		background-color: #fff;
 		// @include padding-left-right;
 
@@ -51,7 +73,8 @@
 		.flickity-page-dots {
 			//display: none;
 			bottom: 0;
-			width: 75%;
+			width: 90%;
+			// left: 20%;
 
 			li {
 				width: 10px;

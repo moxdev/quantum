@@ -12,6 +12,7 @@
 
 	#content {
 		background-color: #fff;
+		padding-top: 5rem;
 	}
 
 	.content-wrapper {
@@ -20,10 +21,18 @@
 	}
 
 	article {
+		h1.entry-title {
+
+			&:after {
+				margin-left:auto;
+				margin-right:auto;
+			}
+		}
 		h2:first-of-type {
 			position: relative;
 			text-transform: capitalize;
-			margin-top: 0;
+			margin-top: 4rem;
+
 			font-size: 2.706rem;
 			line-height: 1;
 			padding-top: 1.5rem;
@@ -32,25 +41,16 @@
 				content: '';
 				display: block;
 				margin-top: 0.8235rem;
-				width: 50%;
+				width: 115px;
 				margin-left:auto;
 				margin-right:auto;
 				height: 2px;
 				background: $color__brand-2;
-				// position: absolute;
-				// left: 50%;
 			}
 
 			@include respond-to('small') {
 				&:after {
-					content: '';
-					display: block;
-					position: absolute;
-					left: 0;
-					bottom: -0.3125em;
-					width: 3.25em;
-					height: 2px;
-					background: $color__brand-2;
+					width: 130px;
 				}
 			}
 		}

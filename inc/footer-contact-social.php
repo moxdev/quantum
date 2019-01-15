@@ -37,7 +37,7 @@
 				if ( $name || $add1 || $add2 || $city || $state || $zip || $phone || $fax || $email ) {
 					if ( $name || $add1 || $add2 ) {
 						?>
-						<div>
+						<div class='address-section'>
 							<span class='ftr-company-name'>
 								<?php
 								if ( $name ) :

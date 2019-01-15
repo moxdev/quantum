@@ -2,8 +2,8 @@
 	background-color: rgba(27, 70, 119, 0.7);
 	position: relative;
 	z-index: 50;
-	padding-top: 1em;
-	padding-bottom: 1em;
+	padding-top: 1rem;
+	padding-bottom: .8rem;
 	@include padding-left-right;
 	border-bottom: 4px solid $color__brand-2;
 
@@ -34,7 +34,7 @@
 	}
 
 	.site-branding {
-		max-width: 7em;
+		max-width: 10em;
 		margin-right: auto;
 
 		>a {
