@@ -59,7 +59,7 @@
 	<?php
 	if ( is_front_page() ) :
 		quantum_front_page_carousel();
-	elseif ( is_page() || is_single() ) :
+	elseif ( is_page() && ! is_front_page() || is_home() ) :
 		quantum_page_feature();
 	endif;
 	?>

@@ -352,6 +352,22 @@ function quantum_property_custom_taxonomy() {
 }
 add_action( 'init', 'quantum_property_custom_taxonomy', 0 );
 
+// For Properties Page custom post type
+// https://wpsites.net/web-design/customize-archive-pages-conditionally-using-pre-get-posts/
+
+add_action( 'pre_get_posts', 'custom_post_type_archive' );
+
+function custom_post_type_archive( $query ) {
+
+if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'properties' ) ) {
+
+		$query->set( 'posts_per_page', '6' );
+		$query->set( 'orderby', 'title' );
+    $query->set( 'order', 'DESC' );
+	}
+
+}
+
 
 // Main nav submenu toggling.
 add_filter( 'walker_nav_menu_start_el', 'quantum_add_arrow', 10, 4 );

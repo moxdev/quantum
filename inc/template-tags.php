@@ -202,7 +202,7 @@ if ( ! function_exists( 'quantum_page_feature' ) ) :
 		 * Enqueue objectfit library and output js in footer
 		 */
 		function enqueue_feature_scripts() {
-			wp_enqueue_script( 'quantum-object-fit-library', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20180107', true );
+			wp_enqueue_script( 'quantum-object-fit-library', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20181127', true );
 			add_action( 'wp_footer', 'quantum_object_fit_js', 100 );
 		}
 
@@ -223,7 +223,7 @@ if ( ! function_exists( 'quantum_page_feature' ) ) :
 					$parent = array_pop( $ancestors );
 					?>
 					<div class="wrapper">
-						<span class="parent-name"><?php echo get_the_title( $parent ); ?> / </span>
+						<span class="parent-name"><?php echo get_the_title( $parent ); ?></span><br>
 						<?php foreach ( $ancestors as $ancestor ) { ?>
 							<span class="page-name"><?php echo get_the_title( $ancestor ); ?> &mdash;</span>
 						<?php } ?>
