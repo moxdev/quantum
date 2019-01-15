@@ -4,19 +4,29 @@
 	margin-right: auto;
 	margin-top: 2.94rem;
 
-	@include respond-to('medium') {
+	@include respond-to('x-small') {
+		max-width: 400px;
 		display: flex;
-		justify-content: space-around;
-		font-size: .9em;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
 
+	@include respond-to('medium') {
+		max-width: none;
 	}
 
 	.statistics-container {
 		display: flex;
-		// justify-content: center;
 		margin-bottom: 2rem;
 
-		// @include test(green)
+		@include respond-to('x-small') {
+			flex: 1 1 50%;
+		}
+
+		@include respond-to('medium') {
+			flex: 1;
+			justify-content: center;
+		}
 	}
 
 
