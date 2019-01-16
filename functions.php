@@ -344,7 +344,7 @@ function quantum_property_custom_taxonomy() {
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
-		'show_in_nav_menus'          => false,
+		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
 	);
 	register_taxonomy( 'property_locations', array( 'properties' ), $args );
